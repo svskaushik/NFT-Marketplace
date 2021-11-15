@@ -1,9 +1,9 @@
 import Router from "next/router"
 import nProgress from "nprogress"
 import "../styles/globals.css"
-import "../styles/nprogress.css"
+import "../styles/NProgress.css"
 import Link from 'next/link'
-import WalletConnectButton from "./Components/connectButton.js"
+import WalletConnectButton from "./Components/ConnectButton.js"
 
 Router.events.on("routeChangeStart", nProgress.start);
 Router.events.on("routeChangeError", nProgress.done);
