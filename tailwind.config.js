@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'bg': "linear-gradient( 116.7deg, rgba(72,186,248,1) -3.4%, rgba(243,245,77,1) 96.6% );"
+        'bg': "linear-gradient( 360deg, #ffd89b , #19547b  );"
       }  
     },
   },

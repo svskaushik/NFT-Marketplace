@@ -2,6 +2,7 @@ import { ethers } from 'ethers'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Web3Modal from "web3modal"
+import Spinner from "./Components/Spinner.js"
 
 
 import {
@@ -63,23 +64,30 @@ export default function Home() {
     loadNFTs()
   }
   if (loadingState === 'loaded' && !nfts.length) return (<h1 className="px-20 py-10 text-3xl text-white">No items in marketplace</h1>)
+  if (loadingState != 'loaded'){
+   return (
+    <div className="min-h-screen flex place-items-center justify-center ">
+      < Spinner/>
+    </div>
+    )
+  }
   return (
     <div className="flex justify-center">
-      <div className="px-4" style={{ maxWidth: '1600px' }}>
+      <div className="px-4 pb-6" style={{ maxWidth: '1600px' }}>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
           {
             nfts.map((nft, i) => (
-              <div key={i} className="shadow rounded-lg overflow-hidden">
-                <img src={nft.image} />
-                <div className="p-4">
-                  <p style={{ height: '64px' }} className="text-2xl font-semibold">{nft.name}</p>
+              <div key={i} className="shadow-lg rounded-lg overflow-hidden transform transition duration-500 hover:scale-105">
+                <img src={nft.image} className="transform transition duration-500 hover:scale-110" /> 
+                <div className="p-4 bg-white bg-opacity-10 ">
+                  <p style={{ height: '64px' }} className="text-2xl font-semibold text-gray-800">{nft.name}</p>
                   <div style={{ height: '70px', overflow: 'hidden' }}>
-                    <p className="text-gray-400">{nft.description}</p>
+                    <p className="text-gray-900 font-semibold">{nft.description}</p>
                   </div>
                 </div>
-                <div className="p-4 bg-black">
-                  <p className="text-2xl mb-4 font-bold text-white">{nft.price} ETH</p>
-                  <button className="w-full bg-pink-500 text-white font-bold py-2 px-12 rounded" onClick={() => buyNft(nft)}>Buy</button>
+                <div className="p-4 bg-black bg-opacity-50">
+                  <p className="text-2xl mb-4 font-bold text-white">{nft.price} Matic</p>
+                  <button className="w-full bg-pink-500 text-white font-bold py-2 px-12 rounded transform transition duration-500 hover:scale-110" onClick={() => buyNft(nft)}>Buy</button>
                 </div>
               </div>
             ))

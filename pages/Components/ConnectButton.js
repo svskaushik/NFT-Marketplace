@@ -45,22 +45,7 @@ function WalletConnectButton() {
             setBtnText("Connect");
         }
     };
-
-    // Example code to initialize a web3 instance using window.ethereum as the provider
-    // Requires installatino of web3 via npm install web3
-    // const checkConnection = async () => {
-    //     // Check if browser is running Metamask
-    //     let web3: any;
-    //     if (window.ethereum) {
-    //         web3 = new Web3(window.ethereum);
-    //     } else if (window.web3) {
-    //         web3 = new Web3(window.web3.currentProvider);
-    //     };
-
-    //     // Check if User is already connected by retrieving the accounts
-    //     const accounts = await web3.eth.getAccounts();
-    // };
-
+    
     // Executed on page load. When an account is already connected, then it will display the corresponding account in the button text
     const getCurrentWalletConnected = async () => {
         if (window.ethereum) {
@@ -102,7 +87,7 @@ function WalletConnectButton() {
 
             // Note: This part will trigger the MetaMask pop-up if you are either logged out of your wallet or logged in but not connected to any account. 
             // There won't be a pop-up window if you are already connected with an account
-            const addressArray = await ethereum.request({ method: 'eth_requestAccounts' });
+            const addressArray = await window.ethereum.request({ method: 'eth_requestAccounts' });
             
             if (addressArray.length > 0) {
                 setWallet(addressArray[0])
@@ -135,8 +120,8 @@ function WalletConnectButton() {
  
     // Wallet listener to handle accounts changes by the user
     function addWalletListener() {
-        if (ethereum) {
-          ethereum.on("accountsChanged", (accounts) => {
+        if (window.ethereum) {
+          window.ethereum.on("accountsChanged", (accounts) => {
             if (accounts.length > 0) {
               setWallet(accounts[0]);
               setBtnText(addressFormatter(accounts[0]))
@@ -164,7 +149,7 @@ function WalletConnectButton() {
 
     return (
         <div>
-            <button className="rounded-full font-bold px-4 bg-white hover:bg-blue-500 transition duration-500" onClick={metaMaskInstalled ? onClickConnect : onClickInstall} disabled={isDisabled}>{btnText}</button>       
+            <button className="rounded-full font-bold px-4 bg-white transition duration-500 hover:bg-blue-500 transform hover:-translate-y-1" onClick={metaMaskInstalled ? onClickConnect : onClickInstall} disabled={isDisabled}>{btnText}</button>       
         </div>
     )
 }

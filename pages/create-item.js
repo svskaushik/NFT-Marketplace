@@ -89,7 +89,7 @@ export default function CreateItem() {
           onChange={e => updateFormInput({ ...formInput, description: e.target.value })}
         />
         <input
-          placeholder="Asset Price in Eth"
+          placeholder="Asset Price in Matic"
           className="mt-2 border rounded p-4"
           onChange={e => updateFormInput({ ...formInput, price: e.target.value })}
         />
@@ -104,7 +104,7 @@ export default function CreateItem() {
             <img className="rounded mt-4" width="350" src={fileUrl} />
           )
         }
-        <button onClick={createMarket} className="transition duration-500 ease-in-out font-bold mt-4 bg-pink-500 text-white rounded hover:text-red p-4 shadow-lg">
+        <button onClick={createMarket} className="transform transition duration-500 hover:scale-105 font-bold mt-4 bg-pink-500 text-white rounded p-4 shadow-lg">
           Create Digital Asset
         </button>
       </div>

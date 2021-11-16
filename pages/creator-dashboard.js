@@ -2,6 +2,7 @@ import { ethers } from 'ethers'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Web3Modal from "web3modal"
+import Spinner from "./Components/Spinner.js"
 
 import {
   nftmarketaddress, nftaddress
@@ -49,7 +50,15 @@ export default function CreatorDashboard() {
     setNfts(items)
     setLoadingState('loaded') 
   }
+
   if (loadingState === 'loaded' && !nfts.length) return (<h1 className="py-10 px-20 text-3xl text-white">No assets created</h1>)
+  if (loadingState != 'loaded'){
+   return (
+    <div className="min-h-screen flex place-items-center justify-center ">
+      < Spinner/>
+    </div>
+    )
+  }
   return (
     <div>
       <div className="p-4">
@@ -57,17 +66,17 @@ export default function CreatorDashboard() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
           {
             nfts.map((nft, i) => (
-              <div key={i} className="shadow rounded-lg overflow-hidden">
+              <div key={i} className="shadow-lg rounded-lg overflow-hidden transform transition duration-500 hover:scale-105">
                 <img src={nft.image} className="rounded-t" />
                 <div className="p-4 bg-black">
-                  <p className="text-2xl font-bold text-white">Price - {nft.price} Eth</p>
+                  <p className="text-2xl font-bold text-white">Price - {nft.price} Matic</p>
                 </div>
               </div>
             ))
           }
         </div>
       </div>
-        <div className="px-4">
+        <div className="px-4 pb-6">
         {
           Boolean(sold.length) && (
             <div>
@@ -75,10 +84,10 @@ export default function CreatorDashboard() {
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
                 {
                   sold.map((nft, i) => (
-                    <div key={i} className="shadow rounded-lg overflow-hidden">
+                    <div key={i} className="shadow-lg rounded-lg overflow-hidden transform transition duration-500 hover:scale-105">
                       <img src={nft.image} className="rounded-t" />
                       <div className="p-4 bg-black">
-                        <p className="text-2xl font-bold text-white">Price - {nft.price} Eth</p>
+                        <p className="text-2xl font-bold text-white">Price - {nft.price} Matic</p>
                       </div>
                     </div>
                   ))
