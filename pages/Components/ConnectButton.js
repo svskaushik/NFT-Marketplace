@@ -45,7 +45,7 @@ function WalletConnectButton() {
             setBtnText("Connect");
         }
     };
-    
+
     // Executed on page load. When an account is already connected, then it will display the corresponding account in the button text
     const getCurrentWalletConnected = async () => {
         if (window.ethereum) {
@@ -149,7 +149,7 @@ function WalletConnectButton() {
 
     return (
         <div>
-            <button className="rounded-full font-bold px-4 bg-white transition duration-500 hover:bg-blue-500 transform hover:-translate-y-1" onClick={metaMaskInstalled ? onClickConnect : onClickInstall} disabled={isDisabled}>{btnText}</button>       
+            <button className="rounded-full font-bold px-4 bg-blue-500 bg-opacity-20 transition duration-500 hover:bg-opacity-70 transform hover:-translate-y-1" onClick={metaMaskInstalled ? onClickConnect : onClickInstall} disabled={isDisabled}>{btnText}</button>       
         </div>
     )
 }

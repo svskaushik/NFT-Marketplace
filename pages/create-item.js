@@ -76,35 +76,38 @@ export default function CreateItem() {
   }
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center animate-loadtransition">
       <div className="w-1/2 flex flex-col pb-12">
         <input 
           placeholder="Asset Name"
-          className="mt-8 border rounded p-4"
+          className="mt-8 rounded p-6 bg-black bg-opacity-40 shadow transition duration-500 hover:shadow-2xl focus:shadow-inner"
           onChange={e => updateFormInput({ ...formInput, name: e.target.value })}
         />
         <textarea
           placeholder="Asset Description"
-          className="mt-2 border rounded p-4"
+          className="mt-4 rounded p-6 bg-black bg-opacity-40 shadow transition duration-500 hover:shadow-2xl focus:shadow-inner"
           onChange={e => updateFormInput({ ...formInput, description: e.target.value })}
         />
         <input
           placeholder="Asset Price in Matic"
-          className="mt-2 border rounded p-4"
+          className="mt-4 rounded p-6 bg-black bg-opacity-40 shadow transition duration-500 hover:shadow-2xl focus:shadow-inner"
           onChange={e => updateFormInput({ ...formInput, price: e.target.value })}
         />
+        <label className="flex flex-col items-center px-4 py-2 mt-4 bg-pink-500 text-white rounded shadow-md tracking-wide font-semibold cursor-pointer transform transition duration-500 hover:scale-105">
+        <span className="mt-2 text-base leading-normal">Select a file</span>
         <input
           type="file"
           name="Asset"
-          className="my-4"
+          className="hidden"
           onChange={onChange}
         />
+        </label>
         {
           fileUrl && (
             <img className="rounded mt-4" width="350" src={fileUrl} />
           )
         }
-        <button onClick={createMarket} className="transform transition duration-500 hover:scale-105 font-bold mt-4 bg-pink-500 text-white rounded p-4 shadow-lg">
+        <button onClick={createMarket} className="bg-pink-500 text-white tracking-wide transform transition duration-500 hover:scale-105 font-bold mt-4 rounded p-4 shadow-lg">
           Create Digital Asset
         </button>
       </div>

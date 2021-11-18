@@ -64,30 +64,24 @@ export default function Home() {
     loadNFTs()
   }
   if (loadingState === 'loaded' && !nfts.length) return (<h1 className="px-20 py-10 text-3xl text-white">No items in marketplace</h1>)
-  if (loadingState != 'loaded'){
-   return (
-    <div className="min-h-screen flex place-items-center justify-center ">
-      < Spinner/>
-    </div>
-    )
-  }
+  if (loadingState != 'loaded') return ( < Spinner/>  )
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center animate-loadtransition">
       <div className="px-4 pb-6" style={{ maxWidth: '1600px' }}>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
           {
             nfts.map((nft, i) => (
-              <div key={i} className="shadow-lg rounded-lg overflow-hidden transform transition duration-500 hover:scale-105">
+              <div key={i} className="group shadow-xl rounded-lg overflow-hidden transform transition duration-500 hover:scale-105">
                 <img src={nft.image} className="transform transition duration-500 hover:scale-110" /> 
-                <div className="p-4 bg-white bg-opacity-10 ">
-                  <p style={{ height: '64px' }} className="text-2xl font-semibold text-gray-800">{nft.name}</p>
+                <div className="p-4 bg-white bg-opacity-5 group-hover:bg-opacity-10 group-hover:bg-white transition duration-500">
+                  <p style={{ height: '64px' }} className="text-2xl font-semibold text-black">{nft.name}</p>
                   <div style={{ height: '70px', overflow: 'hidden' }}>
                     <p className="text-gray-900 font-semibold">{nft.description}</p>
                   </div>
                 </div>
-                <div className="p-4 bg-black bg-opacity-50">
+                <div className="p-4 hover:scale-105 bg-black bg-opacity-40 group-hover:bg-opacity-50 transition duration-500">
                   <p className="text-2xl mb-4 font-bold text-white">{nft.price} Matic</p>
-                  <button className="w-full bg-pink-500 text-white font-bold py-2 px-12 rounded transform transition duration-500 hover:scale-110" onClick={() => buyNft(nft)}>Buy</button>
+                  <button className="w-full bg-pink-500 text-white font-bold py-2 px-12 rounded transform transition duration-500 hover:scale-105" onClick={() => buyNft(nft)}>Buy</button>
                 </div>
               </div>
             ))
