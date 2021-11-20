@@ -149,7 +149,7 @@ function WalletConnectButton() {
 
     return (
         <div>
-            <button className="rounded-full font-bold px-4 bg-blue-500 bg-opacity-20 transition duration-500 hover:bg-opacity-70 transform hover:-translate-y-1" onClick={metaMaskInstalled ? onClickConnect : onClickInstall} disabled={isDisabled}>{btnText}</button>       
+            <button className="rounded-full font-bold px-4 bg-blue-400 bg-opacity-20 transition duration-500 hover:bg-opacity-70 transform hover:-translate-y-1" onClick={metaMaskInstalled ? onClickConnect : onClickInstall} disabled={isDisabled}>{btnText}</button>       
         </div>
     )
 }

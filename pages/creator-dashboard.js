@@ -57,11 +57,11 @@ export default function CreatorDashboard() {
     <div className="animate-loadtransition">
       <div className="p-4">
         <h2 className="text-2xl py-2 text-white">Items Created</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 items-start gap-4 pt-4">
           {
             nfts.map((nft, i) => (
               <div key={i} className="pt-2 shadow-lg rounded-lg overflow-hidden transform transition duration-500 hover:scale-105">
-                <img src={nft.image} className="rounded-t" />
+                <img src={nft.image} className="rounded-t-lg" />
                 <div className="p-4 bg-black bg-opacity-50">
                   <p className="text-2xl font-bold text-white">Price - {nft.price} Matic</p>
                 </div>
@@ -75,11 +75,11 @@ export default function CreatorDashboard() {
           Boolean(sold.length) && (
             <div>
               <h2 className="text-2xl py-2 text-white">Items sold</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 items-start gap-4 pt-4">
                 {
                   sold.map((nft, i) => (
                     <div key={i} className="shadow-lg rounded-lg overflow-hidden transform transition duration-500 hover:scale-105">
-                      <img src={nft.image} className="rounded-t" />
+                      <img src={nft.image} className="rounded-t-lg" />
                       <div className="p-4 bg-black bg-opacity-50">
                         <p className="text-2xl font-bold text-white">Price - {nft.price} Matic</p>
                       </div>

@@ -53,7 +53,7 @@ export default function MyAssets() {
   return (
     <div className="flex justify-center animate-loadtransition">
       <div className="p-4 pb-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 items-start gap-4 pt-4">
           {
             nfts.map((nft, i) => (
               <div key={i} className="shadow-lg rounded-lg overflow-hidden transform transition duration-500 hover:scale-105 animate-loadtransition">

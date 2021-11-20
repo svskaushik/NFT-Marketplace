@@ -77,7 +77,7 @@ export default function CreateItem() {
 
   return (
     <div className="flex justify-center animate-loadtransition">
-      <div className="w-1/2 flex flex-col pb-12">
+      <div className="w-3/4 sm:w-1/2 flex flex-col pb-12">
         <input 
           placeholder="Asset Name"
           className="mt-8 rounded p-6 bg-black bg-opacity-40 shadow transition duration-500 hover:shadow-2xl focus:shadow-inner"
