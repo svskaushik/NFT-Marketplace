@@ -13,9 +13,9 @@ function WalletConnectButton() {
     // Do this in order to shorten window.ethereum to simply ethereum later in the code
     //const { ethereum } = window;
 
-    useEffect( async () => {
+    useEffect(() => {
         // Check whether MetaMask is installed
-        MetaMaskClientCheck();
+        async function check() {MetaMaskClientCheck();
 
         
         
@@ -26,7 +26,9 @@ function WalletConnectButton() {
 
           // Add wallet listener to handle account changes by the user
           addWalletListener();
-        }
+        }}
+
+        check()
     },[])
 
     //Check whether MetaMask Chrome extension is installed
@@ -40,7 +42,6 @@ function WalletConnectButton() {
     const MetaMaskClientCheck = () => {
         if (!isMetaMaskInstalled()) {
             setBtnText("Install Metamask");
-            console.log("Hello")
         } else {
             setBtnText("Connect");
         }

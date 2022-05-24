@@ -3,8 +3,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Web3Modal from "web3modal"
 import Spinner from "./Components/Spinner.js"
-
-
+import Image from 'next/image'
 
 import {
   nftaddress, nftmarketaddress
@@ -21,7 +20,7 @@ export default function Home() {
   }, [])
   async function loadNFTs() {
     /* create a generic provider and query for unsold market items */
-    const provider = new ethers.providers.JsonRpcProvider("https://rpc-mumbai.maticvigil.com/")
+    const provider = new ethers.providers.JsonRpcProvider("https://matic-mumbai.chainstacklabs.com/")
     const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider)
     const marketContract = new ethers.Contract(nftmarketaddress, Market.abi, provider)
     const data = await marketContract.fetchMarketItems()
@@ -75,7 +74,7 @@ export default function Home() {
             nfts.map((nft, i) => (
               <div key={i} className="group shadow-xl rounded-lg overflow-hidden transform transition duration-500 hover:scale-105">                
                 <div className="flex justify-center overflow-hidden">
-                <img src={nft.image} className="transform transition duration-500 hover:scale-110 max-h-48" onClick={() => window.open(nft.image)} role="button" />    
+                <Image placeholder="empty" height="400" alt="NFT Image" width="500" src={nft.image} className="transform transition duration-500 hover:scale-110 max-h-48" onClick={() => window.open(nft.image)} role="button" />    
                 </div>
                 <div className="p-4 bg-white bg-opacity-5 group-hover:bg-opacity-10 group-hover:bg-white transition duration-500">
                   <p style={{ height: '64px' }} className="text-2xl font-semibold text-gray-200">{nft.name}</p>
